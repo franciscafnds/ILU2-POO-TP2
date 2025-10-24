@@ -10,7 +10,8 @@ public class BoundaryPrendreEtal {
 	}
 
 	public void prendreEtal(String nomVendeur) {
-		//TODO a completer
+		//TODO 
+		
 	}
 
 	private void installerVendeur(String nomVendeur) {
