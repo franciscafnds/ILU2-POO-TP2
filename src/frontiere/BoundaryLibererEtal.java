@@ -15,7 +15,7 @@ public class BoundaryLibererEtal {
 			System.out.println("Mais vous n'êtes pas inscrit sur notre marché aujourd'hui !\n");
 		} else {
 			String[] donneesEtal = controlLibererEtal.libererEtal(nomVendeur);
-			if (donneesEtal != null && Boolean.parseBoolean(donneesEtal[0])) {
+			if (donneesEtal != null && Boolean.parseBoolean(donneesEtal[0])) { // strong en boolean
                 String produit = donneesEtal[2];
                 int quantiteInitial = Integer.parseInt(donneesEtal[3]);
                 int quantiteVendu = Integer.parseInt(donneesEtal[4]);

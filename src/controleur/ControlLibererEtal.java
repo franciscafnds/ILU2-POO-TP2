@@ -33,11 +33,7 @@ public class ControlLibererEtal {
 		}
 		
 		String[] donneesEtal = new String[5];
-		donneesEtal[0] = String.valueOf(etal.isEtalOccupe());
-		donneesEtal[1] = etal.getVendeur().getNom();
-		donneesEtal[2] = etal.getProduit();
-		donneesEtal[3] = String.valueOf(etal.getProduit());
-		donneesEtal[4] = String.valueOf(etal.getQuantite());
+		donneesEtal = etal.etatEtal();		
 		
 		etal.libererEtal();
 		return donneesEtal;
