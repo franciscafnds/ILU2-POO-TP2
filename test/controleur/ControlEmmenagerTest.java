@@ -11,43 +11,45 @@ import personnages.Gaulois;
 import villagegaulois.Village;
 
 class ControlEmmenagerTest {
-	Village village;
-	ControlEmmenager controlEmmenager;
-	Gaulois[] gaulois;
-	Druide druide;
-	Chef chef;
+	private Village village;
+	private ControlEmmenager controlEmmenager;
+	private Chef abraracourcix;
 	
 	@BeforeEach
 	void initialiser() {
-		village = new Village("village",10,10);
-		village.setChef(chef);
+		System.out.println("Initialisation...");
+		village = new Village("le village des irréductibles",10, 5);
+		abraracourcix = new Chef("Abraracourcix", 10, village);
+		village.setChef(abraracourcix);
 		controlEmmenager = new ControlEmmenager(village);
-		gaulois = new Gaulois[10];
 	}
 	
 	@Test
 	void testControlEmmenager() {
-		controlEmmenager = new ControlEmmenager(village);
 		assertNotNull(controlEmmenager,"Constructeur ne renvoie pas null");
 	}
 
 	@Test
 	void testIsHabitant() {
-		controlEmmenager.ajouterGaulois("gaulois", 5);
-		assertNotNull(controlEmmenager.isHabitant("gaulois"));
+		controlEmmenager.ajouterGaulois("Bonemine", 5);
+		assertTrue(controlEmmenager.isHabitant("Bonemine"));
+		assertFalse(controlEmmenager.isHabitant("Existe pas"));
+		controlEmmenager.ajouterDruide("Panoramix", 10, 1, 5);
+		assertTrue(controlEmmenager.isHabitant("Panoramix"));
 	}
 
 	@Test
 	void testAjouterDruide() {
-		controlEmmenager.ajouterDruide("druide", 7, 2, 9);
-		// controlEmmenager.
-		// assertNotNull(controlEmmenager.isHabitant("druide"));
+		assertFalse(controlEmmenager.isHabitant("Panoramix"));
+		controlEmmenager.ajouterDruide("Panoramix", 10, 1, 5);
+		assertTrue(controlEmmenager.isHabitant("Panoramix"));
 	}
 
 	@Test
 	void testAjouterGaulois() {
-		controlEmmenager.ajouterGaulois("gaulois", 2);
-		assertNotNull(village.trouverHabitant("gaulois"));
+		assertFalse(controlEmmenager.isHabitant("Bonemine"));
+		controlEmmenager.ajouterGaulois("Bonemine", 2);
+		assertTrue(controlEmmenager.isHabitant("Bonemine"));
 	}
 
 }
